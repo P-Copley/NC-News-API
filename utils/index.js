@@ -28,12 +28,3 @@ exports.formatComments = (comments, articleDocs, userDocs) => {
     };
   });
 };
-
-exports.addCommentCount = article => {
-  return Comment.find({ belongs_to: article._id })
-    .countDocuments()
-    .then(commentCount => {
-      article.commentCount = commentCount;
-      return article;
-    });
-};
