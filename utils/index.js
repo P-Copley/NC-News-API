@@ -20,7 +20,7 @@ exports.formatComments = (comments, articleDocs, userDocs) => {
     )._id;
     const created_by = userDocs.find(
       user => user.username === comment.created_by
-    );
+    )._id;
     return {
       ...comment,
       belongs_to,
