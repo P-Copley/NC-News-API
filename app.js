@@ -2,6 +2,7 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const apiRouter = require('./routes/api.js');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const { DB_URL } =
   process.env.NODE_ENV === 'production' ? process.env : require('./config');
 const { handle400s, handle404s, handle500s } = require('./errors');
@@ -15,6 +16,7 @@ mongoose
     console.log(`connected to ${DB_URL}`);
   });
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res, next) => {
