@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const { Article, Topic, Comment, User } = require('../models');
 const { formatArticles, formatComments } = require('../utils');
 
-// start with not returning the data
-
-// const seedDB = ({ articleData, topicData, commentData, userData }) => {
-//   return mongoose.connection.dropDatabase().then(() => {});
-// };
 const seedDB = ({ articleData, topicData, commentData, userData }) => {
   return mongoose.connection
     .dropDatabase()

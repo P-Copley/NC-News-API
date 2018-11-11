@@ -23,25 +23,9 @@ app.get('/', (req, res, next) => {
 
 app.use('/api', apiRouter);
 
-app.get('/*', (req, res, next) => {
+app.all('/*', (req, res, next) => {
   next({ status: 404, msg: 'Resource not found' });
 });
-
-// app.use((err, req, res, next) => {
-//   if (err.name === 'CastError' || err.status === 400)
-//     res.status(400).send({ msg: err.msg || 'bad request' });
-//   else next(err);
-// });
-
-// app.use((err, req, res, next) => {
-//   if (err.status === 404)
-//     res.status(404).send({ msg: err.msg || 'Page not found' });
-// });
-
-// app.use((err, req, res, next) => {
-//   console.log(err);
-//   res.status(500).send({ msg: 'Internal Server Error' });
-// });
 
 app.use(handle400s);
 app.use(handle404s);
